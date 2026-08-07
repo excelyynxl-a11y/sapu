@@ -1,6 +1,6 @@
 from typing import TypeVar, Generic
-from entry_block import SENTINEL, EntryBlock
-from datetime import date 
+from data_structures.entry_block import SENTINEL, EntryBlock
+from datetime import date
 
 T = TypeVar('T')
 

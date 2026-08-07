@@ -1,7 +1,7 @@
 from typing import Generic, TypeVar, Iterable
-from array_sorted_list import ArraySortedList
-from entry_block import EntryBlock
-from datetime import date 
+from data_structures.array_sorted_list import ArraySortedList
+from data_structures.entry_block import EntryBlock
+from datetime import date
  
 T = TypeVar('T')
 
