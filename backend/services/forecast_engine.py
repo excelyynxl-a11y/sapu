@@ -137,7 +137,6 @@ class ForecastEngine:
         in_risk = False
         risk_start = None
         risk_min = None
-        days_below = 0
 
         for d, balance in series:
             if balance < self.threshold:
@@ -145,20 +144,20 @@ class ForecastEngine:
                     in_risk = True
                     risk_start = d
                     risk_min = balance
-                    days_below = 1
                 else:
                     risk_min = min(risk_min, balance)
-                    days_below += 1
             else:
                 if in_risk:
+                    days_below = (d - risk_start).days
                     risk_periods.append(
-                        RiskPeriod(risk_start, d - timedelta(days=1), risk_min, days_below)
+                        RiskPeriod(risk_start, d, risk_min, days_below)
                     )
                     in_risk = False
 
         # Handle risk that extends to the end of the window
         if in_risk:
             last_date = series[-1][0]
+            days_below = (last_date - risk_start).days
             risk_periods.append(
                 RiskPeriod(risk_start, last_date, risk_min, days_below)
             )
