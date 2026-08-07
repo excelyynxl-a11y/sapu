@@ -22,6 +22,7 @@ class Cycle(str, Enum):
     BIWEEKLY = "biweekly"
     MONTHLY = "monthly"
     ANNUAL = "annual"
+    CUSTOM = "custom"
 
 
 class Direction(str, Enum):
@@ -205,6 +206,16 @@ class ForecastEngine:
                 n += 1
                 current = self._add_months(event.start_date, n * 12)
 
+        elif event.cycle == Cycle.CUSTOM:
+            # Step forward by custom_days 
+            step = timedelta(days=event.custom_days)
+            current = event.start_date
+            while current < self.from_date:
+                current += step
+            while current <= to_date:
+                dates.append(current)
+                current += step
+
         return dates
 
     def k_sorted_list_merge(self, sorted_lists: List[ArraySortedList]) -> List[EntryBlock]:
@@ -277,7 +288,7 @@ class ForecastEngine:
 
         return balance_series
 
-    def _next_occurrence(self, current: date, cycle: Cycle) -> Optional[date]:
+    def _next_occurrence(self, current: date, cycle: Cycle, custom_days: int = None) -> Optional[date]:
         """
         Return the next date after current for the given cycle, or None if invalid.
         """
@@ -289,6 +300,8 @@ class ForecastEngine:
             return self._add_months(current, 1)
         elif cycle == Cycle.ANNUAL:
             return self._add_months(current, 12)
+        elif cycle == Cycle.CUSTOM and custom_days is not None:
+            return current + timedelta(days=custom_days)
         return None
 
     @staticmethod
