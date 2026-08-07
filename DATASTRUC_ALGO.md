@@ -64,6 +64,7 @@
     [gym, 19Apr, -100], 
     [spotify, 23Apr, -50],
     [gym, 26Apr, -100], 
-    [xhs_income, 28Apr, +50],
+    [xhs_income, 28Apr
+    , +50],
 ]
 
