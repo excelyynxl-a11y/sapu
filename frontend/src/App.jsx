@@ -25,7 +25,7 @@ function App() {
         <Route path='/' element={authUser ? <Home /> : <Navigate to='/login' />} /> 
 
         {/* if user is not authenticated, go to Register, else go to Landing  */}
-        <Route path='/signup' element={!authUser ? <Register /> : <Navigate to='/' />} /> 
+        <Route path='/register' element={!authUser ? <Register /> : <Navigate to='/' />} /> 
 
         {/* if user authenticated, go to Login, else go to Landing  */}
         <Route path='/login' element={!authUser ? <Login /> : <Navigate to='/' />} /> 
