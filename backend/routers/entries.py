@@ -1,5 +1,6 @@
 from datetime import date
 from enum import Enum
+from typing import Optional
 
 from fastapi import APIRouter, Depends, status
 from pydantic import BaseModel, Field
@@ -21,6 +22,7 @@ class RecurringEntryCreate(BaseModel):
     cycle: Cycle
     start_date: date
     direction: Direction
+    custom_days: Optional[int] = None
 
 
 class OneTimeEntryCreate(BaseModel):
