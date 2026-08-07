@@ -1,6 +1,7 @@
 from fastapi import HTTPException, status
 
 from models.entry import RecurringEntry, OneTimeEntry
+from services.forecast_engine import Cycle
 
 class EntryService:
     """
@@ -9,6 +10,19 @@ class EntryService:
 
     @staticmethod
     async def create_recurring_entry(user_id: str, entry_data) -> dict:
+        # Validate custom_days
+        if entry_data.cycle == Cycle.CUSTOM:
+            if entry_data.custom_days is None or entry_data.custom_days <= 0:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="custom_days must be a positive integer when cycle is 'custom'",
+                )
+        elif entry_data.custom_days is not None:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="custom_days should only be set when cycle is 'custom'",
+            )
+
         entry = RecurringEntry(
             user_id=user_id,
             name=entry_data.name.strip(),
@@ -16,6 +30,7 @@ class EntryService:
             cycle=entry_data.cycle,
             start_date=entry_data.start_date,
             direction=entry_data.direction,
+            custom_days=entry_data.custom_days,
         )
         await entry.insert()
         return {
@@ -27,6 +42,7 @@ class EntryService:
             "cycle": entry.cycle.value,
             "start_date": entry.start_date.isoformat(),
             "direction": entry.direction.value,
+            "custom_days": entry.custom_days,
         }
 
     @staticmethod
@@ -62,6 +78,7 @@ class EntryService:
                     "cycle": e.cycle.value,
                     "start_date": e.start_date.isoformat(),
                     "direction": e.direction.value,
+                    "custom_days": e.custom_days,
                 }
                 for e in recurring
             ],
