@@ -46,3 +46,11 @@ async def get_me(user: User = Depends(AuthService.get_current_user)):
         "username": user.username,
         "email": user.email,
     }
+
+@router.get("/check")
+async def check_auth(user: User = Depends(AuthService.get_current_user)):
+    return {
+        "user_id": str(user.id),
+        "username": user.username,
+        "email": user.email,
+    }
