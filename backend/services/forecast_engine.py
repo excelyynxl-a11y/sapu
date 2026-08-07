@@ -292,7 +292,7 @@ class ForecastEngine:
         """
         Return the next date after current for the given cycle, or None if invalid.
         """
-        if cycle == Cycle.WEEKLY:
+        if cycle == Cycle.WEEKLY: 
             return current + timedelta(weeks=1)
         elif cycle == Cycle.BIWEEKLY:
             return current + timedelta(weeks=2)
