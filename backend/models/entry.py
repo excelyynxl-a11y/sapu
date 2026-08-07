@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, Optional
 from datetime import date
 from beanie import Document, Indexed
 from pydantic import Field
@@ -14,6 +14,7 @@ class RecurringEntry(Document):
     cycle: Cycle
     start_date: date
     direction: Direction
+    custom_days: Optional[int] = None  # only set when cycle == CUSTOM
 
     class Settings:
         name = "recurring_entries"
