@@ -34,7 +34,7 @@ function CheckForecastForm({
             return;
         }
 
-        if (num <= 0) {
+        if (num < 0) {
             nextErrors[key] = 'Must be a positive integer';
             return;
         }
