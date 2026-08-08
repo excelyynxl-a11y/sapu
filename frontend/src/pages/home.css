@@ -190,3 +190,256 @@
   color: var(--text);
   font-size: 15px;
 }
+
+/* ===== Forecast Toggle Button ===== */
+
+.forecast-toggle-btn {
+  width: calc(100% - 48px);
+  margin: 24px 24px 0;
+  padding: 14px;
+  font-size: 16px;
+  font-family: var(--sans);
+  font-weight: 500;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.forecast-toggle-btn:hover {
+  opacity: 0.9;
+}
+
+/* ===== Forecast Form ===== */
+
+.forecast-form {
+  margin: 16px 24px 0;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.forecast-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.forecast-form-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--text-h);
+}
+
+.forecast-form-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.forecast-form-close:hover {
+  background: var(--code-bg);
+  color: var(--text-h);
+}
+
+.forecast-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.forecast-field label {
+  font-size: 14px;
+  color: var(--text-h);
+}
+
+.forecast-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-family: var(--sans);
+  color: var(--text-h);
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.forecast-input:focus {
+  border-color: var(--accent);
+}
+
+.forecast-input.error {
+  border-color: #ef4444;
+}
+
+.forecast-error {
+  font-size: 13px;
+  color: #ef4444;
+}
+
+.forecast-submit-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  font-family: var(--sans);
+  font-weight: 500;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.forecast-submit-btn:hover {
+  opacity: 0.9;
+}
+
+/* ===== Forecast Section ===== */
+
+.forecast-section {
+  margin: 16px 24px 0;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.forecast-fold-btn {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.forecast-fold-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.forecast-header {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 145%;
+}
+
+.forecast-header strong {
+  color: var(--text-h);
+}
+
+.forecast-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.forecast-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.forecast-card-date {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.forecast-card-balance {
+  font-size: 17px;
+  font-weight: 600;
+  font-family: var(--mono);
+  color: var(--text-h);
+}
+
+.forecast-safe {
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.forecast-risk {
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.forecast-risk-header {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-h);
+  margin-top: 8px;
+}
+
+.risk-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.risk-card {
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(239, 68, 68, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.risk-card-dates {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+.risk-card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.risk-card-min,
+.risk-card-days {
+  font-weight: 600;
+  color: #ef4444;
+}
+
+.risk-empty {
+  font-size: 14px;
+  color: var(--text);
+  padding: 12px 0;
+}
