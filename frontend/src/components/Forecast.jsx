@@ -1,4 +1,4 @@
-import React from 'react'
+import { ChevronUp } from 'lucide-react'
 import ForecastCard from './ForecastCard'
 import RiskCard from './RiskCard'
 
@@ -10,49 +10,55 @@ function Forecast({
     risk_period_list,
     onClose
 }) {
-  return (
-    <div>
-        <div>
+    return (
+        <div className="forecast-section">
+
             {/* close button */}
-            X
-        </div>
-        <div>
-            {/* header */}
-            With starting_balance as starting balance,
-            the next window_days forecast looks like:
-        </div>
+            <button className="forecast-fold-btn" onClick={onClose}>
+                <ChevronUp size={20} />
+            </button>
 
-        <div>
-            {/* render each item in balance_series onto a ForecastCard */}
-            {balance_series.map((key, item) => (
-                <ForecastCard 
-                    date={item.date}
-                    balance={item.balance}
-                    threshold={threshold}
-                />
-            ))}
-            
-        </div>
+            {/* statement */}
+            <div className="forecast-header">
+                With <strong>${starting_balance.toFixed(2)}</strong> as starting balance,
+                the next <strong>{window_days}</strong> days forecast looks like:
+            </div>
 
-        <div>
-            {/* risk summary */}
-            Risk Summary 
-        </div>
+            {/* display ForecastCard */}
+            <div className="forecast-list">
+                {balance_series.map((item, index) => (
+                    <ForecastCard 
+                        key={index}
+                        date={item.date}
+                        balance={item.balance}
+                        threshold={threshold}
+                    />
+                ))}
+            </div>
 
-        <div>
-            {/* render each item in risk_period_list onto a RiskCard */}
-            {risk_period_list.map((key, item) => (
-                <RiskCard 
-                    start_date={item.start_date}
-                    end_date={item.end_date}
-                    min_balance={item.min_balance}
-                    days_below_threshold={item.days_below_threshold}
-                />
-            ))}
+            {/* risk summary header */}
+            <div className="forecast-risk-header">
+                Risk Summary
+            </div>
+
+            {/* display RiskCard  */}
+            <div className="risk-list">
+                {risk_period_list.length === 0 ? (
+                    <div className="risk-empty">No risk periods — your balance stays above the threshold.</div>
+                ) : (
+                    risk_period_list.map((item, index) => (
+                        <RiskCard 
+                        key={index}
+                        start_date={item.start_date}
+                        end_date={item.end_date}
+                        min_balance={item.min_balance}
+                        days_below_threshold={item.days_below_threshold}
+                        />
+                    ))
+                )}
+            </div>
         </div>
-        
-    </div>
-  )
+    )
 }
 
 export default Forecast
