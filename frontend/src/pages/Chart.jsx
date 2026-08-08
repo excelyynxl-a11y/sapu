@@ -2,7 +2,9 @@ import React from 'react'
 
 function Chart() {
   return (
-    <div>Chart</div>
+    <div>
+      TODO: CHART USING RECHART
+    </div>
   )
 }
 
