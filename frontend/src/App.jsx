@@ -23,20 +23,20 @@ function App() {
       <Navbar />
 
       <Routes>
-        {/* if user authenticated, go to Home, else go to Login  */}
-        <Route path='/' element={authUser ? <Home /> : <Navigate to='/login' />} /> 
+        {/* landing page */}
+        <Route path='/' element={authUser ? <Navigate to='/home' /> : <Landing />} /> 
 
-        {/* if user is not authenticated, go to Register, else go to Landing  */}
-        <Route path='/signup' element={!authUser ? <Register /> : <Navigate to='/' />} /> 
+        {/* signup page */}
+        <Route path='/signup' element={!authUser ? <Register /> : <Navigate to='/home' />} /> 
 
-        {/* if user authenticated, go to Login, else go to Landing  */}
-        <Route path='/login' element={!authUser ? <Login /> : <Navigate to='/' />} /> 
+        {/* login page */}
+        <Route path='/login' element={!authUser ? <Login /> : <Navigate to='/home' />} /> 
         
         {/* user's home tab  */}
-        <Route path='/home' element={<Home />} /> 
+        <Route path='/home' element={authUser ? <Home /> : <Navigate to='/login' />} /> 
 
         {/* user's chart tab */}
-        <Route path='/chart' element={<Chart />} /> 
+        <Route path='/chart' element={authUser ? <Chart /> : <Navigate to='/login' />} /> 
       </Routes>
     </div>
   )

@@ -44,7 +44,7 @@ const Login = () => {
     try {
       await login(formData)
       toast.success('Login successful')
-      navigate('/')
+      navigate('/home')
     } catch (err) {
       if (err.includes('email') || err.includes('Email')) {
         setErrors({ email: err })
