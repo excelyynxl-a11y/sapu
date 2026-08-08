@@ -203,7 +203,7 @@
   color: #fff;
   background: var(--accent);
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   transition: opacity 0.2s;
 }
@@ -442,4 +442,166 @@
   font-size: 14px;
   color: var(--text);
   padding: 12px 0;
+}
+
+/* ===== Add Income Toggle Button ===== */
+
+.income-toggle-btn {
+  width: calc(100% - 48px);
+  margin: 24px 24px 0;
+  padding: 14px;
+  font-family: var(--sans);
+  color: var(--text-h);
+  background: var(--bg);
+  border: 2px dashed var(--border);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.income-toggle-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.income-toggle-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.income-toggle-subtitle {
+  font-size: 13px;
+  color: var(--text);
+  margin-top: 4px;
+}
+
+/* ===== Add Income Form ===== */
+
+.income-form {
+  margin: 16px 24px 0;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.income-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.income-form-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--text-h);
+}
+
+.income-form-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.income-form-close:hover {
+  background: var(--code-bg);
+  color: var(--text-h);
+}
+
+.income-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.income-field label {
+  font-size: 14px;
+  color: var(--text-h);
+}
+
+.income-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-family: var(--sans);
+  color: var(--text-h);
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.income-input:focus {
+  border-color: var(--accent);
+}
+
+.income-input.error {
+  border-color: #ef4444;
+}
+
+.income-error {
+  font-size: 13px;
+  color: #ef4444;
+}
+
+.income-toggle-group {
+  display: flex;
+  gap: 8px;
+}
+
+.income-toggle-group .income-toggle-btn {
+  flex: 1;
+  margin: 0;
+  width: auto;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.income-toggle-group .income-toggle-btn:hover {
+  border-color: var(--accent-border);
+}
+
+.income-toggle-group .income-toggle-btn.active {
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-color: var(--accent);
+}
+
+.income-submit-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  font-family: var(--sans);
+  font-weight: 500;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.income-submit-btn:hover {
+  opacity: 0.9;
 }
