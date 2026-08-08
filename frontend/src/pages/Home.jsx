@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react'
 import { useAuthStore } from '../store/useAuthStore'
 import { useEntryStore } from '../store/useEntryStore'
@@ -24,13 +23,18 @@ function Home() {
   } = useEntryStore();
 
   const { 
-    risk_period_list, 
-    balance_series, 
+    window_days,
+    starting_balance,
+    threshold,
+    forecastList,
+    riskPeriodList,
     getMyForecast, 
     getMyRiskPeriod
   } = useForecastStore();
 
   const [filter, setFilter] = useState('all');
+  const [showForecastForm, setShowForecastForm] = useState(false);
+  const [showForecast, setShowForecast] = useState(false);
 
   useEffect(() => {
     getAllEntries();
@@ -49,28 +53,53 @@ function Home() {
     deleteEntry(entry_id);
   };
 
+  const handleForecastCheck = async ({ window_days, threshold, starting_balance }) => {
+    try {
+      await Promise.all([
+        getMyForecast(window_days, starting_balance, threshold),
+        getMyRiskPeriod(window_days, starting_balance, threshold),
+      ]);
+      setShowForecastForm(false);
+      setShowForecast(true);
+    } catch (error) {
+      console.log("Error fetching forecast:", error);
+    }
+  };
+
+  const toggleForecastForm = () => {
+    if (showForecast) {
+      setShowForecast(false);
+    }
+    setShowForecastForm(prev => !prev);
+  };
+
   return (
     <div>
       
       {/* check forecast button */}
-      <div>
-        Check Balance Forecast 
-      </div>
+      <button className="forecast-toggle-btn" onClick={toggleForecastForm}>
+        Check Balance Forecast
+      </button>
 
-      {/* if check froecast button clicked, render CheckForecastForm */}
-      <CheckForecastForm 
-        onCheck={() => {}}
-      />
+      {/* if check forecast button clicked, render CheckForecastForm */}
+      {showForecastForm && (
+        <CheckForecastForm 
+          onCheck={handleForecastCheck}
+          onClose={() => setShowForecastForm(false)}
+        />
+      )}
 
       {/* when the check button of CheckForecastForm clicked, render Forecast */}
-      <Forecast 
-        window_days={100}
-        threshold={1000}
-        starting_balance={1000}
-        balance_series={[]}
-        risk_period_list={[]}
-        onClose={() => {}}
-      />
+      {showForecast && (
+        <Forecast 
+          window_days={window_days}
+          threshold={threshold}
+          starting_balance={starting_balance}
+          balance_series={forecastList}
+          risk_period_list={riskPeriodList}
+          onClose={() => setShowForecast(false)}
+        />
+      )}
 
       {/* create entry button */}
       <div>
