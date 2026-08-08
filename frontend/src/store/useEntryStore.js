@@ -2,6 +2,12 @@ import { create } from 'zustand';
 import { toast } from 'react-hot-toast';
 import { axiosInstance } from '../lib/axios.js';
 
+function toCents(value) {
+    const num = Number(value);
+    if (Number.isNaN(num)) return num;
+    return Math.round(num * 100) / 100;
+}
+
 export const useEntryStore = create((set, get) => ({
     entries: { recurring: [], onetime: [] },
 
@@ -15,8 +21,34 @@ export const useEntryStore = create((set, get) => ({
         }
     },
 
-    createEntry: () => {
+    createEntry: async (entryData) => {
+        try {
+            const isRecurring = entryData.entry_type === 'recurring';
+            const endpoint = isRecurring ? '/entries/recurring' : '/entries/onetime';
 
+            const payload = isRecurring
+                ? {
+                    name: entryData.name,
+                    amount: toCents(entryData.amount),
+                    cycle: entryData.cycle,
+                    start_date: entryData.start_date,
+                    direction: entryData.direction,
+                    custom_days: entryData.cycle === 'custom' ? Number(entryData.custom_days) : undefined,
+                }
+                : {
+                    name: entryData.name,
+                    amount: toCents(entryData.amount),
+                    date: entryData.date,
+                    direction: entryData.direction,
+                };
+
+            await axiosInstance.post(endpoint, payload);
+            toast.success('Added successfully');
+            await get().getAllEntries();
+        } catch (error) {
+            console.log("Error in createEntry:", error);
+            throw error;
+        }
     },
 
     deleteEntry: async (entry_id) => {
