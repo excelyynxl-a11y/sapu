@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Toaster } from 'react-hot-toast'
 import './App.css'
 import Navbar from './components/Navbar'
 import { Routes, Route, Navigate } from 'react-router-dom'
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <div>
+      <Toaster position="top-center" />
       <Navbar />
 
       <Routes>
@@ -25,7 +27,7 @@ function App() {
         <Route path='/' element={authUser ? <Home /> : <Navigate to='/login' />} /> 
 
         {/* if user is not authenticated, go to Register, else go to Landing  */}
-        <Route path='/register' element={!authUser ? <Register /> : <Navigate to='/' />} /> 
+        <Route path='/signup' element={!authUser ? <Register /> : <Navigate to='/' />} /> 
 
         {/* if user authenticated, go to Login, else go to Landing  */}
         <Route path='/login' element={!authUser ? <Login /> : <Navigate to='/' />} /> 
