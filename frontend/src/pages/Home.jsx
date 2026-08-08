@@ -35,6 +35,7 @@ function Home() {
   const [filter, setFilter] = useState('all');
   const [showForecastForm, setShowForecastForm] = useState(false);
   const [showForecast, setShowForecast] = useState(false);
+  const [showIncomeForm, setShowIncomeForm] = useState(false);
 
   useEffect(() => {
     getAllEntries();
@@ -73,6 +74,19 @@ function Home() {
     setShowForecastForm(prev => !prev);
   };
 
+  const toggleIncomeForm = () => {
+    setShowIncomeForm(prev => !prev);
+  };
+
+  const handleCreateEntry = async (entryData) => {
+    try {
+      await createEntry(entryData);
+      setShowIncomeForm(false);
+    } catch (error) {
+      console.log("Error creating entry:", error);
+    }
+  };
+
   return (
     <div>
       
@@ -102,24 +116,26 @@ function Home() {
       )}
 
       {/* create entry button */}
-      <div>
-        Add Income / Recurring Bill 
-        <div>
-          Plug in your income or recurring bill
-        </div>
-      </div>
+      <button className="income-toggle-btn" onClick={toggleIncomeForm}>
+        <div className="income-toggle-title">Add Income / Recurring Bill</div>
+        <div className="income-toggle-subtitle">Plug in your income or recurring bill</div>
+      </button>
 
       {/* if create entry button clicked, render AddIncomeForm */}
-      <AddIncomeForm 
-        onCreate={() => {}}
-        onClose={() => {}}
-      />
+      {showIncomeForm && (
+        <AddIncomeForm
+          onCreate={handleCreateEntry}
+          onClose={() => setShowIncomeForm(false)}
+        />
+      )}
 
       {/* display all previous entries in sorted date order*/}
       <div className="entry-section">
         {/* filter by recurring/onetime section with clear all */}
         <div className="entry-section-header">
-          <h2>Your Entries</h2>
+          <h2>
+            Your Entries
+          </h2>
           <div className="entry-filters">
             <button
               className={`entry-filter-btn ${filter === 'all' ? 'active' : ''}`}
