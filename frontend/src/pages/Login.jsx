@@ -2,7 +2,30 @@ import React from 'react'
 
 function Login() {
   return (
-    <div>Login</div>
+    <div>
+      <div>
+        {/* login header */}
+        Login
+      </div>
+
+      <div>
+        {/* email */}
+        Email 
+      </div>
+
+      <div>
+        {/* password */}
+        Password 
+      </div>
+
+      <div>
+        {/* login button  */}
+        Login
+      </div>
+
+      Don't have an account? Create Account.
+
+    </div>
   )
 }
 
