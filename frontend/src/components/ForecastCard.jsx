@@ -1,22 +1,22 @@
-import React from 'react'
-
 function ForecastCard({
     date,
     balance,
     threshold
 }) {
-  return (
-    // if balance < threshold, ForecastCard is in red, else green
-    <div>
-        <div>
-            {/* date */}            
-        </div>
+    const isRisk = balance < threshold;
 
-        <div>
+    return (
+        <div className={`forecast-card ${isRisk ? 'forecast-risk' : 'forecast-safe'}`}>
+            {/* date  */}
+            <div className="forecast-card-date">
+                {date}
+            </div>
             {/* balance */}
+            <div className="forecast-card-balance">
+                ${balance.toFixed(2)}
+            </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default ForecastCard
