@@ -31,7 +31,7 @@
 - Final extracted list is a sorted list of all EntryBlock based on date.
 - Iterating every recurring charge date from all events is O(N), where N is the number of charges and maintaining heap property via sink() and rise() is O(logK), where K is number of recuring events.
 - Final returns a list of all EntryBlock, where they are sorted based on date
-- Overall complexity is O(N*logK) instead of naive approach of O(N^2)
+- Overall complexity is O(N*logK) instead of naive approach of O(N * K)
 
 ![K-sort merge step 1-2-3](images/ksort_123.png)
 
