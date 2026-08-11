@@ -3,6 +3,7 @@
 ## 1. ArrayMinHeap
 - Minimum heap where each 'node' represent an ArraySortedList.
 - Heap property is maintained based on the current pointer of each ArraySortedList. 
+- TODO: add image
 
 ## 2. ArraySortedList 
 - SortedList to stores a list of EntryBlock.
@@ -10,12 +11,15 @@
 - When inserting in a new EntryBlock, binary search via __index_to_add() determines where to add the new EntryBlock in O(logN), N is number of recurring charge date.
 - Has a pointer that initialised to first element and can be incremented via increment_pointer(). This will be used in k_sorted_lsit_merge() algorithm.
 - Last element is always None / INF so that when pointer done iterating the ArraySortedList, it can be pushed to bottom-most of ArrayMinHeap in k_sorted_list_merge().
+- TODO: add image
 
 ## 3. EntryBlock
 - Represent a block of [event, date, net_charged (negative or positive)]
+- TODO: add image
 
 ## 5. Determine recurring date in determine_charge_date(event, cycle)
 - Based on cycle value (eg: 7 days, 14 days, 1 month, 3 month, 1 year, customised days), generate a list of date of when will recurring charge be imposed on for this event.
+- TODO: add image
 
 ## 6. K-sort merge in k_sorted_list_merge(list of k sorted list) forecast_engine.py
 - k_sorted_list_merge() receive a list of ArraySortedList, with pointer initialised to the first element
@@ -25,9 +29,12 @@
 - Final extracted list is a sorted list of all EntryBlock based on date.
 - Iterating every recurring charge date from all events is O(N), and maintaining heap property via sink() and rise() is O(logK), where K is number of recuring events.
 - Final returns a list of all EntryBlock, where they are sorted based on date
+- Overall complexity is O(N*logK) instead of naive approach of O(N^2)
+- TODO: add image
 
 ## 8. Determine balance in determine_balance(sorted list from k_sorted_list_merge()) forecast_engine.py
 - Iterate and to find net balance on each day within forecast window.
+- TODO: add image
 
 ## 7.Example
 - Amanda has 5 recurring charge and income: 
