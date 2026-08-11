@@ -32,6 +32,7 @@ function Forecast({
                         date={item.date}
                         balance={item.balance}
                         threshold={threshold}
+                        entries={item.entries}
                     />
                 ))}
             </div>
