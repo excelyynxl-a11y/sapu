@@ -19,6 +19,7 @@ export const useForecastStore = create((set) => ({
                 threshold,
                 forecastList: res.data.balance_series,
             });
+            // console.log(res.data.balance_series);
         } catch (error) {
             console.log("Error in getMyForecast:", error);
             throw error;
