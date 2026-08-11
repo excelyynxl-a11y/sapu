@@ -35,8 +35,8 @@ class ForecastService:
             "starting_balance": starting_balance,
             "threshold": threshold,
             "balance_series": [
-                {"date": d.isoformat(), "balance": balance}
-                for d, balance in balance_series
+                {"date": d.isoformat(), "balance": balance, "entries": entries}
+                for d, balance, entries in balance_series
             ],
         }
 

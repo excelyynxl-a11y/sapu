@@ -115,11 +115,12 @@ class ForecastEngine:
 
         return self.k_sorted_list_merge(sorted_lists)
 
-    def compute_balance_series(self) -> List[Tuple[date, float]]:
+    def compute_balance_series(self) -> List[Tuple[date, float, List[dict]]]:
         """
         Sweep line: iterate sorted EntryBlocks and compute running balance.
-        Returns: list of (date, balance). 
-        The first entry is always (from_date, starting_balance).
+        Returns: list of (date, balance, entries) where entries is a list of
+        {"name", "net_charge"} dicts for events occurring on that date.
+        The first entry is always (from_date, starting_balance, []).
         """
         events = self.generate_events()
         return self.determine_balance(events)
@@ -138,7 +139,7 @@ class ForecastEngine:
         risk_start = None
         risk_min = None
 
-        for d, balance in series:
+        for d, balance, _ in series:
             if balance < self.threshold:
                 if not in_risk:
                     in_risk = True
@@ -259,31 +260,38 @@ class ForecastEngine:
 
         return result
 
-    def determine_balance(self, events: List[EntryBlock]) -> List[Tuple[date, float]]:
+    def determine_balance(self, events: List[EntryBlock]) -> List[Tuple[date, float, List[dict]]]:
         """
         Compute running balance per unique date.
         Multiple events on the same day are summed.
-        Series starts with (from_date, starting_balance).
+        Series starts with (from_date, starting_balance, []).
+        Each subsequent entry carries the list of events
+        ({"name", "net_charge"}) that occurred on that date.
         """
         if not events:
-            return [(self.from_date, self.starting_balance)]
+            return [(self.from_date, self.starting_balance, [])]
 
         # start with (from_date, starting_balance)
-        balance_series: List[Tuple[date, float]] = [(self.from_date, self.starting_balance)]
+        balance_series: List[Tuple[date, float, List[dict]]] = [
+            (self.from_date, self.starting_balance, [])
+        ]
         running_balance = self.starting_balance
         current_date = events[0].date
         day_total = 0.0
+        day_entries: List[dict] = []
 
         for event in events: # O(k)
             if event.date != current_date:
                 running_balance += day_total
-                balance_series.append((current_date, running_balance))
+                balance_series.append((current_date, running_balance, day_entries))
                 current_date = event.date
                 day_total = 0.0
+                day_entries = []
             day_total += event.net_charge
+            day_entries.append({"name": event.event, "net_charge": event.net_charge})
 
         running_balance += day_total
-        balance_series.append((current_date, running_balance))
+        balance_series.append((current_date, running_balance, day_entries))
 
         return balance_series
 
