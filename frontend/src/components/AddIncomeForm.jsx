@@ -128,8 +128,9 @@ function AddIncomeForm({
                 {errors.name && <span className="income-error">{errors.name}</span>}
             </div>
 
-            {/* recurring / on-time selection */}
-            <div className="income-field">
+            {/* recurring / one-time selection */}
+            {/* REMARK: if uncomment this section if the app is catered for both one-time and recurring bill / income */}
+            {/* <div className="income-field">
                 <label>Type</label>
                 <div className="income-toggle-group">
                     <button
@@ -147,7 +148,7 @@ function AddIncomeForm({
                         One-Time
                     </button>
                 </div>
-            </div>
+            </div> */}
 
             {/* date input */}
             <div className="income-field">
