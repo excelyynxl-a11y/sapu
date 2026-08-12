@@ -5,13 +5,7 @@
 
 ![EntryBlock](images/entry_block.png)
 
-## 2. ArrayMinHeap
-- Minimum heap where each 'node' represent an ArraySortedList.
-- Heap property is maintained based on the current pointer of each ArraySortedList. 
-
-![ArrayMinHeap](images/array_min_heap.png)
-
-## 3. ArraySortedList 
+## 2. ArraySortedList 
 - SortedList to stores a list of EntryBlock.
 - Value is representted by EntryBlock's date field in ascending order.
 - When inserting in a new EntryBlock, binary search via __index_to_add() determines where to add the new EntryBlock in O(logN), N is number of recurring charge date.
@@ -19,6 +13,12 @@
 - Last element is always None / INF so that when pointer done iterating the ArraySortedList, it can be pushed to bottom-most of ArrayMinHeap in k_sorted_list_merge().
 
 ![ArraySortedList](images/array_sorted_list.png)
+
+## 3. ArrayMinHeap
+- Minimum heap where each 'node' represent an ArraySortedList.
+- Heap property is maintained based on the current pointer of each ArraySortedList. 
+
+![ArrayMinHeap](images/array_min_heap.png)
 
 ## 4. Determine recurring date in determine_charge_date(event, cycle)
 - Based on cycle value (eg: 7 days, 14 days, 1 month, 3 month, 1 year, customised days), generate a list of date of when will recurring charge be imposed on for this event.
