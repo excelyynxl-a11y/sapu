@@ -62,4 +62,4 @@ Sapu is built on the **FARM stack** (FastAPI, React, MongoDB), with JWT-based au
 1. Implement the Chart tab to visualise user's forecast. Data visualisation enchances user experience on the app.
 2. Implement wallet feature. As of now, use have to manually key in their "starting balance" everytime they generate a forecast, which is troublesome and repetitive, it is a good idea to maintain a wallet for every user account, that accumulates their income / bill as time goes.
 3. Implement a One-Time Entry on top of the current the Recurring-Entry. This simulate a more realistic forecaster as any user will definitely have random one-time income once in a while (eg: angpao, gifts, bonus, jackpot).
-4. 
+4. Implement automated testing via pytest, unitest. Integrate into GitHub CI/CD pipeline to reduce repetitive manual testing via Postman.
