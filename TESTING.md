@@ -1,6 +1,6 @@
 # Test Cases
 
-## Test Case 1: Forecast Within ! Month
+## Test Case 1: Forecast Within 1 Month
 
 ## Test Case 2: Forecast Within More Than 1 Month
 
