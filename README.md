@@ -21,6 +21,38 @@ Design documentation containing design rational, planning, feature flow, tech st
 
 ## 🔨 Tech Stack
 
+Sapu is built on the **FARM stack** (FastAPI, React, MongoDB), with JWT-based authentication and a lightweight Vite-powered frontend.
+
+### Backend
+| Layer | Technology |
+|-------|------------|
+| Language / Runtime | Python 3.11.6 |
+| Web Framework | FastAPI 0.111.0 |
+| ASGI Server | Uvicorn 0.29.0 |
+| Database | MongoDB |
+| ODM | Beanie 1.26.0 (async, on top of Motor 3.6.0) |
+| Data Validation | Pydantic 2.8.2 |
+| Authentication | JWT via `python-jose[cryptography]` 3.3.0 + `bcrypt` 4.1.3 |
+| Configuration | `python-dotenv` |
+
+### Frontend
+| Layer | Technology |
+|-------|------------|
+| Framework | React 19 |
+| Build Tool | Vite 8 |
+| Routing | React Router DOM v7 |
+| State Management | Zustand |
+| HTTP Client | Axios |
+| Icons | Lucide React |
+| Notifications | React Hot Toast |
+| Charts | Recharts |
+| Linting | ESLint 10 |
+
+### Others
+| Layer | Technology |
+|-------|------------|
+| Deployment | Render |
+| Testing | Manual API Testing on Postman |
 
 ## 🏡How to run this project locally?
 
