@@ -14,7 +14,11 @@ With Sapu, user can plug in their income and recurring bills, and see your proje
 Design documentation containing design rational, planning, feature flow, tech stacks and AI usage can be found at Google Docs: [Sapu Documentation](https://docs.google.com/document/d/1Qxr0YDOFBjIPZxOTdCWygYJ3QYKYt6FaYZA0EDWVQbE/edit?usp=sharing)
 
 ## 🧪 Testing
-Design documentation containing design rational, planning, feature flow, tech stacks and AI usage can be found at Google Docs: [Sapu Test Documentation](https://docs.google.com/document/d/1xShSBh4TBxqXldxqSRcIy0bmzmHzgEJQ72lbTnNBbnQ/edit?usp=sharing)
+Testing documentation containing test approach, cases and result can be found at Google Docs: [Sapu Test Documentation](https://docs.google.com/document/d/1xShSBh4TBxqXldxqSRcIy0bmzmHzgEJQ72lbTnNBbnQ/edit?usp=sharing)
+
+## 📽 Video Demonstration
+Video demonstration on the Sapu app user flow can be found at this Google Drive link: [Sapu - Video Demonstration]()
+
 
 ## 🚀 Live Hosting on Render
 [Sapu - Cash Flow Forecaster](https://sapu-y2yo.onrender.com/)
