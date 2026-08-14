@@ -19,6 +19,9 @@ Design documentation containing design rational, planning, feature flow, tech st
 ## 🚀 Live Hosting on Render
 [Sapu - Cash Flow Forecaster](https://sapu-y2yo.onrender.com/)
 
+It is normal to see a some Render logs ![RenderLoading](images/ui/render_loading.png) before loaded to the landing page
+![Landing](images/ui/landing.png)
+
 ## 🔨 Tech Stack
 
 Sapu is built on the **FARM stack** (FastAPI, React, MongoDB), with JWT-based authentication and a lightweight Vite-powered frontend.
