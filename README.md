@@ -54,9 +54,57 @@ Sapu is built on the **FARM stack** (FastAPI, React, MongoDB), with JWT-based au
 | Deployment | Render |
 | Testing | Manual API Testing on Postman |
 
-## 🏡How to run this project locally?
+## 🏡 How to run this project locally?
+
+> **Prerequisites**: Python 3.11+, Node.js 18+, and a MongoDB cluster (e.g. a free [MongoDB Atlas](https://www.mongodb.com/atlas) cluster).
+
+### 1. Clone the repository
+```bash
+git clone <repo-url>
+cd sapu
+```
+
+### 2. Set up the backend
+```bash
+cd backend
+python -m venv venv
+# Activate the virtual environment:
+#   Windows:  venv\Scripts\activate
+#   macOS/Linux:  source venv/bin/activate
+pip install -r requirements.txt
+```
+
+Create a `.env` file in `backend/` with the following variables:
+```env
+MONGO_URI=<your-mongodb-connection-string>
+JWT_SECRET=<any-random-secret-string>
+# Optional (with defaults shown):
+# JWT_ALGORITHM=HS256
+# JWT_EXPIRE_MINUTES=1440
+# FRONTEND_URL=http://localhost:5173
+```
+You can get your-mongodb-connection-string from the [MongoDB Atlas website](<your-mongodb-connection-string>).
 
 
+Start the backend server:
+```bash
+uvicorn main:app --reload
+```
+The API will be available at `http://localhost:8000/api`.
+
+### 3. Set up the frontend
+Open a new terminal, then:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+The frontend will be available at `http://localhost:5173`.
+
+### 4. Use the app
+- Open `http://localhost:5173` in your browser.
+- Register a new account (password requires uppercase, lowercase, and a special character).
+- Log in, add your recurring income/expenses, and generate a forecast.
 
 ## 🤔 Potential Enchancement
 1. Implement the Chart tab to visualise user's forecast. Data visualisation enchances user experience on the app.
