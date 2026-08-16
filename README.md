@@ -10,6 +10,9 @@ With Sapu, user can plug in their income and recurring bills, and see your proje
 - Highlight challenge of Sapu -- since bills and income land on different cycles (custom days, weekly, monthly, annual) and the useful output is the exact day your balance dips lowest. 
 - Modelling those overlapping cycles correctly is where it lives.
 
+## 🌝 Full Resource
+Full resources (documentation, test documentation, demo video, UMLs) are located in Google Drive link: [Shortcut Asia - Sapu Cash-Flow Forecaster](https://drive.google.com/drive/folders/1YtrmQuqR-8LjDpzPsK5WwK8sclHITATm?usp=sharing)
+
 ## 📄 Documentation
 Design documentation containing design rational, planning, feature flow, tech stacks and AI usage can be found at Google Docs: [Sapu Documentation](https://docs.google.com/document/d/1Qxr0YDOFBjIPZxOTdCWygYJ3QYKYt6FaYZA0EDWVQbE/edit?usp=sharing)
 
@@ -17,7 +20,7 @@ Design documentation containing design rational, planning, feature flow, tech st
 Testing documentation containing test approach, cases and result can be found at Google Docs: [Sapu Test Documentation](https://docs.google.com/document/d/1xShSBh4TBxqXldxqSRcIy0bmzmHzgEJQ72lbTnNBbnQ/edit?usp=sharing)
 
 ## 📽 Video Demonstration
-Video demonstration on the Sapu app user flow can be found at this Google Drive link: [Sapu - Video Demonstration]()
+Video demonstration on the Sapu app user flow can be found at this Google Drive link: [Sapu - Video Demonstration](https://drive.google.com/file/d/1hNszwxR_IAZpAq4NklP7ucz_h51IW0pj/view?usp=sharing)
 
 
 ## 🚀 Live Hosting on Render
